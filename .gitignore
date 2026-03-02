@@ -1,0 +1,63 @@
+
+# Node.js / backend
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+.env
+.env.*          
+
+
+# Vue / frontend
+
+/todo_microfrontend_vue/node_modules/
+todo_microfrontend_vue/dist/
+todo_microfrontend_vue/.env
+todo_microfrontend_vue/.env.*
+
+
+# Docker / data
+
+# Exclude Postgres local data and logs
+pgdata/
+*.log
+*.tmp
+*.swp
+docker-compose.override.yml
+docker-compose.local.yml
+
+
+# Local logs / large files
+logs
+logs/
+*.zip
+*.tar
+*.bak
+*.backup
+*.exe
+*.iso
+
+
+# OS / IDE
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
