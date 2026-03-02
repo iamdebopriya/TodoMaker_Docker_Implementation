@@ -20,28 +20,28 @@ This architecture is called a **Micro-Frontend** — a modern design pattern whe
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│ Your Browser │
-│ http://localhost:5173 │
+│ Your Browser                                            │
+│ http://localhost:5173                                   │
 └──────────────────────┬──────────────────────────────────┘
  │ HTTP Requests (Vue 3 UI)
  ▼
 ┌─────────────────────────────────────────────────────────┐
-│ todo-frontend (Docker Container) │
-│ Vue 3 + Pinia + Element Plus + Vite │
+│ todo-frontend (Docker Container)                        │                       
+│ Vue 3 + Pinia + Element Plus + Vite                     │
 └──────────────────────┬──────────────────────────────────┘
  │ REST API calls → /todos
  ▼
 ┌─────────────────────────────────────────────────────────┐
-│ todo-backend (Docker Container) │
-│ Node.js + Express + pg │
-│ http://localhost:3000 │
+│ todo-backend (Docker Container)                         │
+│ Node.js + Express + pg                                  │
+│ http://localhost:3000                                   │
 └──────────────────────┬──────────────────────────────────┘
  │ SQL Queries
  ▼
 ┌─────────────────────────────────────────────────────────┐
-│ todo-postgres (Docker Container) │
-│ PostgreSQL 16 │
-│ Data saved in Docker Volume (pgdata/) │
+│ todo-postgres (Docker Container)                        │
+│ PostgreSQL 16                                           │
+│ Data saved in Docker Volume (pgdata/)                   │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -133,13 +133,13 @@ todo_docker/
 ```
 docker-compose.yml defines 3 services:
 
- ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
- │ todo-postgres │◄───│ todo-backend │◄───│ todo-frontend │
- │ │ │ │ │ │
- │ PostgreSQL 16 │ │ Express API │ │ Vue 3 App │
- │ Port: 5432 │ │ Port: 3000 │ │ Port: 5173 │
- │ Volume: pgdata │ │ Waits for DB │ │ Waits for API │
- └─────────────────┘ └─────────────────┘ └─────────────────┘
+ ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+ │ todo-postgres   │◄───│ todo-backend    │◄───│ todo-frontend   │
+ │                 │    |                 |    |                 |
+ │ PostgreSQL 16   │    | Express API     │    │ Vue 3 App       │
+ │ Port: 5432      │    | Port: 3000      │    │ Port: 5173      │
+ │ Volume: pgdata  │    │ Waits for DB    │    │ Waits for API   │
+ └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
 | Service | Image | Port | Depends On |
